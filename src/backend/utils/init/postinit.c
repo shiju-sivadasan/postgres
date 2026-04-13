@@ -70,6 +70,7 @@
 #include "utils/snapmgr.h"
 #include "utils/syscache.h"
 #include "utils/timeout.h"
+#include "utils/pg_audit.h"
 
 /* has this backend called EmitConnectionWarnings()? */
 static bool ConnectionWarningsEmitted;
@@ -1328,6 +1329,12 @@ process_startup_options(Port *port, bool am_superuser)
 
 		SetConfigOption(name, value, gucctx, PGC_S_CLIENT);
 	}
+	if(odoo_audit_enabled)
+   {
+       ereport(LOG,errmsg("odoo_audit is enabled"));
+       odoo_audit_init();
+   };
+
 }
 
 /*
