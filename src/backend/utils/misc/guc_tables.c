@@ -104,7 +104,7 @@
 #include "utils/ps_status.h"
 #include "utils/rls.h"
 #include "utils/xml.h"
-
+#include "utils/odoo_fillfactor.h"
 #ifdef TRACE_SYNCSCAN
 #include "access/syncscan.h"
 #endif
